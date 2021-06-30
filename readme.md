@@ -1,6 +1,6 @@
 # Numberunic
 
-Simple app to change representation of number - from decimal integer to runic.
+Simple app to change representation of number - from decimal integer to runic. App is deployed using vercel to: https://numberunic.vercel.app/
 
 # Requirements
 
