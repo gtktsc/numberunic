@@ -1,41 +1,44 @@
 import { ChangeEvent, useState } from "react";
-import useValue from "controller/value-context";
 
-const validate = (number: number) => {
-  if (number < 1 || number > 9999 || !Number.isInteger(number)) {
-    throw new Error("Number must be an integer between 1 and 9999");
-  }
-};
+import useValue from "controllers/current-value-controller";
+import ErrorMessage from "ui/common/error";
 
-export default function Input() {
+import styles from "./input.module.css";
+import messages from "./messages";
+import { validate } from "./utils";
+
+const Input = () => {
   const [{ value }, { setValue }] = useValue();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const onChange = ({
-    target: { value },
-  }: ChangeEvent<HTMLInputElement>): void => {
-    try {
-      validate(Number(value));
-      setValue(Number(value));
+  const onChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+    const maybeValue = Number(value);
+
+    if (validate(maybeValue)) {
+      setValue(maybeValue);
       setErrorMessage(null);
-    } catch ({ message }) {
-      setErrorMessage(message);
+    } else {
+      setErrorMessage(messages.error);
     }
   };
 
   return (
-    <>
-      <label htmlFor="number-input">
-        Select number (integer between 1 and 9999)
+    <div className={styles.wrapper}>
+      <label className={styles.common} htmlFor="input">
+        {messages.label}
       </label>
       <input
-        id="number-input"
+        id="input"
+        className={styles.common}
         type="number"
         onChange={onChange}
+        // in order to remove error message on focus out
         onBlur={onChange}
         value={value}
       />
-      {errorMessage && <span>{errorMessage}</span>}
-    </>
+      <ErrorMessage message={errorMessage} />
+    </div>
   );
-}
+};
+
+export default Input;

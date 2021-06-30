@@ -16,6 +16,11 @@ export interface Line {
   end: Point;
 }
 
+export type ShapeRotation = (shape: Decimals) => {
+  translate: [number, number];
+  scale: [number, number];
+};
+
 export type DrawLine = (line: Line) => void;
 export type DrawLines = (shape: Array<Line>) => void;
 export type DrawShapes = (
@@ -25,7 +30,6 @@ export type DrawShapes = (
 
 export interface DrawInterface {
   line: DrawLine;
-  lines: DrawLines;
   shape: DrawShapes;
 }
 export interface DrawConstructor {

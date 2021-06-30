@@ -1,96 +1,95 @@
-const GRID_SIZE = 25;
-
 export const grid = {
-  center: { x: GRID_SIZE * 2, y: GRID_SIZE * 2 },
-  maxWidth: GRID_SIZE * 4,
-  maxHeight: GRID_SIZE * 4,
+  size: 25,
+  middle: 25 * 2,
+  max: 25 * 4,
 };
 
-const shapePoints = {
-  topLeft: { x: grid.center.x, y: 0 },
-  topRight: { x: grid.maxWidth, y: 0 },
-  bottomLeft: { x: grid.center.y, y: GRID_SIZE },
-  bottomRight: { x: grid.maxWidth, y: GRID_SIZE },
+const corners = {
+  topLeft: { x: grid.middle, y: 0 },
+  topRight: { x: grid.max, y: 0 },
+  bottomLeft: { x: grid.middle, y: grid.size },
+  bottomRight: { x: grid.max, y: grid.size },
 };
 
-export const baseline = {
-  start: { x: GRID_SIZE * 2, y: grid.maxWidth },
-  end: shapePoints.topLeft,
-};
-
+// could be typed as Point interface but ts uses structural typing so it will be compatible anyway
 export const shapes = {
   "1": [
     {
-      start: shapePoints.topLeft,
-      end: shapePoints.topRight,
+      start: corners.topLeft,
+      end: corners.topRight,
     },
   ],
   "2": [
     {
-      start: shapePoints.bottomLeft,
-      end: shapePoints.bottomRight,
+      start: corners.bottomLeft,
+      end: corners.bottomRight,
     },
   ],
   "3": [
     {
-      start: shapePoints.topLeft,
-      end: shapePoints.bottomRight,
+      start: corners.topLeft,
+      end: corners.bottomRight,
     },
   ],
   "4": [
     {
-      start: shapePoints.bottomLeft,
-      end: shapePoints.topRight,
+      start: corners.bottomLeft,
+      end: corners.topRight,
     },
   ],
   "5": [
     {
-      start: shapePoints.bottomLeft,
-      end: shapePoints.topRight,
+      start: corners.bottomLeft,
+      end: corners.topRight,
     },
     {
-      start: shapePoints.topLeft,
-      end: shapePoints.topRight,
+      start: corners.topLeft,
+      end: corners.topRight,
     },
   ],
   "6": [
     {
-      start: shapePoints.topRight,
-      end: shapePoints.bottomRight,
+      start: corners.topRight,
+      end: corners.bottomRight,
     },
   ],
   "7": [
     {
-      start: shapePoints.topLeft,
-      end: shapePoints.topRight,
+      start: corners.topLeft,
+      end: corners.topRight,
     },
     {
-      start: shapePoints.topRight,
-      end: shapePoints.bottomRight,
+      start: corners.topRight,
+      end: corners.bottomRight,
     },
   ],
   "8": [
     {
-      start: shapePoints.topRight,
-      end: shapePoints.bottomRight,
+      start: corners.topRight,
+      end: corners.bottomRight,
     },
     {
-      start: shapePoints.bottomLeft,
-      end: shapePoints.bottomRight,
+      start: corners.bottomLeft,
+      end: corners.bottomRight,
     },
   ],
   "9": [
     {
-      start: shapePoints.topRight,
-      end: shapePoints.bottomRight,
+      start: corners.topRight,
+      end: corners.bottomRight,
     },
     {
-      start: shapePoints.bottomLeft,
-      end: shapePoints.bottomRight,
+      start: corners.bottomLeft,
+      end: corners.bottomRight,
     },
     {
-      start: shapePoints.topLeft,
-      end: shapePoints.topRight,
+      start: corners.topLeft,
+      end: corners.topRight,
     },
   ],
+};
+
+export const base = {
+  start: { x: grid.size * 2, y: grid.max },
+  end: corners.topLeft,
 };

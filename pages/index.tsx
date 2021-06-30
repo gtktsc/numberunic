@@ -1,11 +1,11 @@
 import Input from "ui/input";
 import Canvas from "ui/canvas";
 
-export default function App() {
-  return (
-    <>
-      <Input />
-      <Canvas />
-    </>
-  );
-}
+const Numberunic = () => (
+  <>
+    <Input />
+    <Canvas />
+  </>
+);
+
+export default Numberunic;
