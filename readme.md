@@ -56,3 +56,27 @@ TS compiler has three non-default options:
 - noImplicitAny
 - downlevelIteration
 - baseUrl
+
+App uses babel - jest requires modules transpilation. Eslint - with default next config.
+
+# How to run it
+
+To start this app run:
+`yarn && yarn dev`
+or use npm if you are old-school boy. When app is started visit
+`http://localhost:3000/`
+
+# How to test/check/lint it
+
+Linting:
+`yarn lint`
+Testing:
+`yarn test`
+
+# TODO
+
+- Insufficient tests coverage
+  - Proper testing for runic output
+  - Proper testing for integration of UI components
+  - Proper testing for controllers
+  - Snapshot for constants - to be sure it won't be accidentally changed

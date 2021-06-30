@@ -34,7 +34,7 @@ export const transformValue = (value: number): DecimalValue => {
 // tens -> vertical flip
 // hundreds -> horizontal flip
 // thousands -> vertical and horizontal flip
-const shapeRotation: ShapeRotation = (shape) => {
+export const shapeRotation: ShapeRotation = (shape) => {
   switch (shape) {
     case "tens": {
       return { translate: [grid.max, 0], scale: [-1, 1] };
